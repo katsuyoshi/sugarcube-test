@@ -29,6 +29,8 @@ class AlertViewTableViewController < UITableViewController
     self.tableView.deselectRowAtIndexPath indexPath, animated:true
   end
 
+
+  # show UIAlertView
   def simple
     UIAlertView.alert "This is happening, OK?" { self.happened! }
   end
@@ -78,6 +80,7 @@ class AlertViewTableViewController < UITableViewController
   
 
   
+  # callbacks
   def happened!
     p "happened!"
   end

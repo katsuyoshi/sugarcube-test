@@ -50,29 +50,29 @@ class AlertViewTableViewController < UITableViewController
   end
   
   def succes_only
-      alert = UIAlertView.alert "Oops.",
-        message:"Success only",
-        buttons: ['Ok'],
-        success: lambda { self.happened! }
+    alert = UIAlertView.alert "Oops.",
+      message:"Success only",
+      buttons: ['Ok'],
+      success: lambda { self.happened! }
   end
   
   def append_cancel
-      alert = UIAlertView.alert "No buttons.",
-        message:"Does Cancel added?",
-        cancel: proc { self.cancel }
+    alert = UIAlertView.alert "No buttons.",
+      message:"Does Cancel added?",
+      cancel: proc { self.cancel }
   end
   
   def append_ok
-      alert = UIAlertView.alert "No buttons.",
-        message:"Does OK added?",
-        success: lambda { self.happened! }
+    alert = UIAlertView.alert "No buttons.",
+      message:"Does OK added?",
+      success: lambda { self.happened! }
   end
   
   def append_cancel_and_ok
-      alert = UIAlertView.alert "No buttons.",
-        message:"Does OK added?",
-        cancel: proc { self.cancel },
-        success: lambda { self.happened! }
+    alert = UIAlertView.alert "No buttons.",
+      message:"Does OK added?",
+      cancel: proc { self.cancel },
+      success: lambda { self.happened! }
   end
   
   

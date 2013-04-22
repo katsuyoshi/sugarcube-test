@@ -1,57 +1,12 @@
 # -*- coding: utf-8 -*-
 class MainTableViewController < UITableViewController
 
-=begin
-  def initWithStyle style
-    super
-    self
-  end
-=end
-
   def source
     @source ||= [
-        "UIAlertView"
+        ["UIAlertView", "AlertViewTableViewController"]
       ]
   end
     
-=begin
-  def viewDidLoad
-    super
-    # navigationItem.rightBarButtonItem = editButtonItem;
-  end
-=end
-
-=begin
-  def viewDidUnload
-    super
-  end
-=end
-
-=begin
-  def viewWillAppear animated
-    super
-  end
-=end
-
-=begin  
-  def viewWillDisappear animated
-    super
-  end
-=end
-  
-=begin
-  def shouldAutorotateToInterfaceOrientation interfaceOrientation
-    interfaceOrientation == UIInterfaceOrientationPortrait
-  end
-=end
-
-
-=begin
-  def numberOfSectionsInTableView tableView
-    1
-  end
-=end
-  
   def tableView tableView, numberOfRowsInSection:section
     source.size
   end
@@ -59,36 +14,14 @@ class MainTableViewController < UITableViewController
   CellIdentifier = "Cell"
   def tableView tableView, cellForRowAtIndexPath:indexPath
     cell = tableView.dequeueReusableCellWithIdentifier CellIdentifier, forIndexPath:indexPath
-    cell.textLabel.text = source[indexPath.row]
+    cell.textLabel.text = source[indexPath.row].first
     cell
   end
 
-=begin
-  def tableView tableView, canEditRowAtIndexPath:indexPath
-    true
+  def tableView tableView, didSelectRowAtIndexPath:indexPath
+    sb = UIStoryboard.storyboardWithName "Storyboard", bundle:nil
+    c = sb.instantiateViewControllerWithIdentifier source[indexPath.row].last
+    self.navigationController << c
   end
-=end
-  
-=begin
-  def tableView tableView, commitEditingStyle:editingStyle, forRowAtIndexPath:indexPath
-    case  editingStyle
-    when UITableViewCellEditingStyleDelete
-      tableView.deleteRowsAtIndexPaths [indexPath], withRowAnimation:UITableViewRowAnimationFade
-    when UITableViewCellEditingStyleInsert
-      # 
-    end
-  end
-=end
-  
-=begin
-  def tableView tableView, moveRowAtIndexPath:fromIndexPath, toIndexPath:toIndexPath
-  end
-=end
-  
-=begin
-  def tableView tableView, canMoveRowAtIndexPath:indexPath
-    true
-  end
-=end
 
 end
